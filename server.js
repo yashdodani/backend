@@ -8,7 +8,7 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 mongoose
-  .connect(DB, {
+  .connect("mongodb://localhost:27017/myapp", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,
