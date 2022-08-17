@@ -10,13 +10,9 @@ const studentRouter = require("./routes/studentRoutes");
 const schoolRouter = require("./routes/schoolRoutes");
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 // app.use(express.static("templates"));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
 
 app.use("/api/v1/student", studentRouter);
 app.use("/api/v1/college", schoolRouter);

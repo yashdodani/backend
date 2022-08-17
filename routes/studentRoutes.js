@@ -10,10 +10,9 @@ router.post("/signup", authController.signUpStudent);
 
 router.route("/self-assessment/").get(studentController.selfAssessmentWelcome);
 
-router
-  .route("/self-assessment/:id")
-  .get(studentController.selfAssessmentTest)
-  .post(studentController.self);
+router.get("/self-assessment/:id", studentController.selfAssessmentTest)
+
+router.post("/self-assessment",studentController.self);
 // .post(studentController.selfAssessmentWork);
 
 module.exports = router;

@@ -27,9 +27,7 @@ exports.selfAssessmentTest = (req, res) => {
 
   // 1) consider "id"
   const parameterId = req.params.id;
-  console.log(req.url.query);
   const question = assessment[Number(parameterId)];
-  console.log(question);
 
   // console.log(question.title);
 
@@ -46,7 +44,7 @@ exports.selfAssessmentTest = (req, res) => {
 };
 
 exports.self = (req, res, next) => {
-  const rating = req.body.inputRating;
+  const rating = req.body;
   console.log(rating);
   res.status(200).json({
     status: "success",
