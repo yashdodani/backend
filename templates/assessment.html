@@ -168,9 +168,9 @@
 
 <body>
   <div class="container">
-    <form action="/self-assessment/{%NEXTID%}" method="post">
+    <form>
       <div class="title">Self Assessment!</div>
-      <h1 id="parameter-heading">Parameter {%NEXTID%} : {%TITLE%}</h1>
+      <h1 id="parameter-heading">Parameter {%ID%} : {%TITLE%}</h1>
       <br>
       <h5>{%DESCRIPTION%}</h5>
       <br>
@@ -185,17 +185,26 @@
           <input type="submit" name="" value="previous">
         </div> -->
       <div class="input-box button" style="width: 20%; display: inline-block; float: right;">
-        <a href="/api/v1/student/self-assessment/{%NEXTID%}"><input type="submit" name="" value="Next"></a>
+        <button id="submitButton" name="" value="Next">
+          <a href="/api/v1/student/self-assessment/{%NEXTID%}">
+            Next
+          </a>
+        </button>
       </div>
     </form>
     <script>
       const form = document.querySelector("form")
+      const button = document.getElementById("submitButton")
       const parameterHeadingElement = document.getElementById("parameter-heading")
       const parameterRatingElement = document.getElementById("inputRating")
 
 
-      form.addEventListener("submit", async (ev) => {
+      form.addEventListener("submit", (ev) => {
         ev.preventDefault()
+      })
+
+      button.addEventListener("click", async (ev) => {
+        // ev.preventDefault()
         const parameterId = parameterHeadingElement.innerText.split(" ")[1]
         const rating = parameterRatingElement.value
         const body = {
